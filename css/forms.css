@@ -1,0 +1,258 @@
+@font-face {
+    font-family: Lancult;
+    src: url(../fonts/fontlan.otf);
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+html,
+body {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    background-color: var(--color-01);
+    height: 100%;
+}
+
+:root {
+    --color-01: #ffffff;
+  --color-02: #7ebfdd;
+  --color-03: #68D4F6;
+  --color-04: #4c7ac8;
+  --color-05: #cbdddc;
+  --color-06: #3a4d4bb0;
+  --color-07: #000000;
+  --color-08: #1720a0;
+
+    --font-lancult: 'Lancult';
+    --font-site: 'Roboto';
+}
+
+::selection{
+    background-color: var(--color-05);
+    color: var(--color-03);
+}
+
+header {
+    line-height: 50px;
+}
+
+h1 {
+    font-family: var(--font-lancult);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-site);
+}
+
+.header {
+    height: auto;
+    display: flex;
+    align-items: center;
+    color: var(--color-07);
+    width: 100%;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    border-bottom: 2px solid var(--color-04);
+  }
+  
+  .mod-session {
+    display: block;
+    margin: 0 50px;
+  }
+  
+  .modify a:hover , button a:hover{
+    color: var(--color-08);
+    transition-duration: 0.5s;
+    cursor: pointer;
+    width: 200px;
+    height: 30px;
+  }
+  
+  .btn-p{
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 20px 50px 10px;
+  }
+  
+  
+  .btn-p a{
+    color: var(--color-01);
+  }
+  
+  .session-welcome {
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  .btn-prof, .btn-sair, button {
+    display: inline-block;
+    color: var(--color-01);
+    background-color: var(--color-04);
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 5px;
+    width: 200px;
+  }
+  
+  .btn-prof, .btn-sair{
+    width: 100px;
+    height: 20px;
+    text-align: center;
+  }
+  
+  .btn-prof a, .btn-sair a{
+    color: var(--color-01);
+    
+  }
+  
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main>form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 400px;
+    margin-top: 10%;
+    text-align: start;
+}
+
+form {
+    background-color: var(--color-02);
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.form-signup{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 400px;
+    text-align: start;
+    margin: auto;
+
+}
+
+label {
+    margin: 20px 0 0 5px;
+    font-weight: 500;
+}
+
+input,
+select {
+    padding: 10px;
+    background-color: #ffffff;
+    border: 2px solid var(--color-05);
+    border-radius: 15px;
+    margin-top: 15px;
+    box-shadow: 2px 2px 5px var(--color-06);
+}
+
+select {
+    padding: 5px;
+    border: 1px solid var(--color-05);
+}
+
+.selects {
+    padding: 10px;
+}
+
+.selects>div {
+    display: inline;
+    padding-left: 20px;
+    margin: auto;
+}
+
+div.error-login {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
+
+}
+
+input.submit {
+    height: 50px;
+    background-color: var(--color-07);
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--color-03);
+}
+
+.submit:hover {
+    background-color: var(--color-04);
+    color: var(--color-07);
+    transition-duration: 1s;
+    cursor: pointer;
+    border: 2px solid var(--color-05);
+}
+
+div.error-signup {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+form>p {
+    font-size: 15px;
+    text-align: right;
+}
+
+h1 {
+    text-align: center;
+}
+
+p>a:hover {
+    color: var(--color-05);
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    background-color: transparent;
+}
+
+a {
+    color: var(--color-07);
+}
+
+footer {
+    flex-shrink: 0;
+    bottom: 0;
+    margin-top: 20px;
+    text-align: center;
+    background-color: var(--color-07);
+    height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    font-family: var(--font-lancult);
+}
+
+.foot {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    background-color: var(--color-07);
+    height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: var(--color-01);
+    font-family: var(--font-lancult);
+}
