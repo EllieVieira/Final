@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Maio-2022 às 01:35
+-- Tempo de geração: 07-Jun-2022 às 06:25
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -21,12 +21,9 @@ SET time_zone = "+00:00";
 -- Banco de dados: `lancult_bd`
 --
 
--- -----------------------------------------------------
--- Schema lancult_bd
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `lancult_bd` DEFAULT CHARACTER SET utf8 ;
-USE `lancult_bd` ;
+-- --------------------------------------------------------
 
+--
 -- Estrutura da tabela `discursao`
 --
 
@@ -34,7 +31,7 @@ CREATE TABLE `discursao` (
   `ID` int(11) NOT NULL,
   `TITULO` varchar(100) NOT NULL,
   `DESCRICAO` varchar(500) NOT NULL,
-  `DATA` datetime DEFAULT current_timestamp(),
+  `DATA` datetime DEFAULT NULL,
   `IMAGEM` varchar(255) DEFAULT NULL,
   `ATIVO` enum('ATIVO','INATIVO') DEFAULT 'ATIVO',
   `USUARIOS_ID` int(11) NOT NULL,
@@ -94,10 +91,12 @@ INSERT INTO `paises` (`ID`, `NOME`) VALUES
 CREATE TABLE `respostas` (
   `ID` int(11) NOT NULL,
   `DESCRICAO` varchar(500) NOT NULL,
-  `DATA` datetime DEFAULT current_timestamp(),
-  `PONTUACAO` tinyint(4) NOT NULL DEFAULT 1,
+  `DATA` datetime DEFAULT NULL,
+  `PONTUACAO` tinyint(4) NOT NULL DEFAULT 0,
   `DISCURSAO_ID` int(11) NOT NULL,
-  `USUARIOS_ID` int(11) NOT NULL
+  `USUARIOS_ID` int(11) NOT NULL,
+  `votos` int(11) NOT NULL DEFAULT 0,
+  `ATIVO` enum('ATIVO','INATIVO') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -131,12 +130,20 @@ CREATE TABLE `usuarios` (
   `NOME` varchar(80) NOT NULL,
   `EMAIL` varchar(255) NOT NULL,
   `PASSWORD` varchar(100) NOT NULL,
-  `DATA_CADASTRAMENTO` datetime DEFAULT current_timestamp(),
+  `DATA_CADASTRAMENTO` datetime DEFAULT NULL,
   `PAISES_ID` int(11) NOT NULL,
   `TIPO_ID` int(11) NOT NULL,
   `STATUS` enum('ATIVO','INATIVO') DEFAULT 'ATIVO',
   `PERFIL` enum('ADMIN','USUARIO') DEFAULT 'USUARIO'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`ID`, `NOME`, `EMAIL`, `PASSWORD`, `DATA_CADASTRAMENTO`, `PAISES_ID`, `TIPO_ID`, `STATUS`, `PERFIL`) VALUES
+(44, 'Maria V', 'maria@gmail.com', '202cb962ac59075b964b07152d234b70', '2022-06-05 16:06:58', 1, 1, 'ATIVO', 'USUARIO'),
+(45, 'Julia Ba', 'julia@gmail.com', 'df6d2338b2b8fce1ec2f6dda0a630eb0', '2022-06-06 22:06:09', 2, 2, 'ATIVO', 'USUARIO');
 
 --
 -- Índices para tabelas despejadas
@@ -193,7 +200,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `discursao`
 --
 ALTER TABLE `discursao`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT de tabela `idiomas`
@@ -211,7 +218,7 @@ ALTER TABLE `paises`
 -- AUTO_INCREMENT de tabela `respostas`
 --
 ALTER TABLE `respostas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT de tabela `tipo`
@@ -223,7 +230,7 @@ ALTER TABLE `tipo`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Restrições para despejos de tabelas
